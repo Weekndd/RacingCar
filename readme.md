@@ -1,2 +1,3 @@
-<h1> Git Practise! <h1>
-readme!
+# Git Practise!
+1. Test
+2. readme!
