@@ -8,7 +8,7 @@ interface RandomUtil {
     public int generate();
 }
 
-public class Main {
+public class RacingCar {
     @Test
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -17,9 +17,10 @@ public class Main {
          * 랜덤값 정의 클래스
          */
         class RandomNum{
+        	final int MAXNUM = 9;
             public int generate(){
                 Random random = new Random();
-                return random.nextInt();
+                return random.nextInt(MAXNUM);
             }
         }
 
@@ -89,8 +90,11 @@ public class Main {
                 }
                 return gameCount;
             }
+            
+            
             public String run(int randomNum,Car player) {
-                if (randomNum >= 4) {
+            	final int MINNUM = 4;
+                if (randomNum >= MINNUM) {
                     player.result = player.result.concat("-");
                     player.runCount++;
                 }
@@ -119,7 +123,6 @@ public class Main {
                         winnerResult = player.get(i).runCount;
                     }
                 }
-
                 //runCount 가장 높은 값 출력
                 String winner = ""; //우승자 출력할 문자열
                 for(int i=0; i<playerStr.length; i++) {
@@ -127,14 +130,13 @@ public class Main {
                         winner = winner.concat(player.get(i).name+",");
                     }
                 }
-
                 //마지막에 붙은 쉼표값 제거
                 if(winner.endsWith(",")){
                     winner = winner.substring(0,winner.length()-1);
                 };
                 System.out.println("최종 우승자: "+winner);
             }
-        }
+        }//End game
         //===================================================================================
 
         Game game = new Game();
