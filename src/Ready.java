@@ -6,24 +6,11 @@ import java.util.Scanner;
  */
 public class Ready {
     static Scanner input = new Scanner(System.in);
-    public static String[] join() {
-
-        String playerInput = input.next();
-        String[] playerName = playerInput.split(",");
-        return playerName;
-    }
-
     public static ArrayList<Car> createPlayer(String[] playerName) {
         ArrayList<Car> player = new ArrayList<Car>();
-        try{
             for (int i = 0; i < playerName.length; i++) {
                 player.add(new Car(playerName[i])); //플레이어 리스트에 Car클래스 생성자로 만들어서 추가
             }
-        } catch (IllegalArgumentException e){
-            System.out.println("[ERROR]5글자 이하의 이름을 입력하세요!");
-            playerName = join();
-            player = createPlayer(playerName);
-        }
         return player;
     }
 

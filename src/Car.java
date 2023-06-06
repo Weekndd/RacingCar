@@ -6,30 +6,29 @@ import java.util.Scanner;
 
 public class Car {
     final int NAME_LENGTH_THRESHOLD = 6;
-    Scanner input = new Scanner(System.in);
     String name;
-    private String runCount = "";     //몇 번 움직였는지 상황
+    private int runCount =  0;     //몇 번 움직였는지 상황
 
-    Car(String name) throws IllegalArgumentException {
-        while(true){
-            if(name.length()>=NAME_LENGTH_THRESHOLD) {
-                throw new IllegalArgumentException();
-            } else {
-                this.name = name;
-                break;
-            }
-        }
+    public Car() { } //기본생성자
+    public Car(String name) {
+            this.name = name;
     }
-    public static String run(int randomNumber, Car player) {
+    public Car(String name,int runCount) {
+        this.name = name;
+        this.runCount = runCount;
+    }//테스트용 생성자
+    public static void run(int randomNumber, Car player) {
         final int MOVE_THRESHOLD = 4;
         if (randomNumber >= MOVE_THRESHOLD ) {
-            player.runCount = player.runCount.concat("-");
+            player.runCount ++;
         }
-        return player.runCount;
     }
 
     public int getRunCount () {
-        return runCount.length();
+        return runCount;
     }
 
+    public String getName() {
+        return name;
+    }
 }
